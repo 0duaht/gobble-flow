@@ -14,6 +14,7 @@ gem "validates_email_format_of"
 gem "materialize-sass"
 gem "sdoc", "~> 0.4.0", group: :doc
 gem "codeclimate-test-reporter", group: :test, require: nil
+gem 'coveralls', require: false
 
 group :development, :test do
   gem 'byebug'
