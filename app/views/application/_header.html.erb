@@ -1,0 +1,16 @@
+<nav class= "tri">
+	<div class="nav-wrapper container">
+		<a class="brand-logo black-text" href="/">
+			<div class="left valign-wrapper">
+				<%= image_tag "http://2.bp.blogspot.com/-xehIl3HCKtQ/UKnl0OIg4UI/AAAAAAAABRY/WEL2iFcuwJo/s1600/icon-turkey-light.png", class: 'width-max', height: '40', width: '40' %>
+				<span class="white-text">Gobble</span>
+			</div>
+		</a>
+		
+		<ul class="right hide-on-med-and-down">
+	      <% unless current_page?(signup_path) %>
+	      	<li><%= link_to 'Sign Up', signup_path %></li>
+	      <% end %>
+		</ul>
+	</div>
+</nav>

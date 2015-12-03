@@ -1,0 +1,21 @@
+module ConstantsHelper
+  API_INVALID = "Authentication failed. Invalid API key."
+  ENTRY_URL_INVALID = "Invalid Entry. URL parameter(s) missing."
+  LINK_SUCCESS = "Link generated successfully. "
+  ENTRY_INVALID = "Invalid Entry."
+  URL_TAKEN = "URL already taken. Please choose a "\
+        "different one, or leave blank to generate unique link."
+  PATH_RESERVED = "Path reserved. Please choose a different custom URL"
+  NO_PERMISSION = "Permission not granted."
+  NO_EDIT_PERMISSION = "You're not permitted to edit link."
+  LINK_DELETED = "Link deleted by Creator"
+  LINK_DISABLED = "Link disabled by Creator"
+  LINK_NOT_CREATED = "Link not created yet"
+  DELETE_SUCCESS = "Link deleted successfully!"
+  NO_DELETE_PERMISSION = "You're not permitted to delete link!"
+  DATA_UPDATED = "Data updated"
+  LOGGED_IN = "Already logged in."
+  LOGIN_FAILED = "Login failed. User details incorrect!"
+  LOGOUT_SUCCESS = "Successfully logged out"
+  ERROR = "Error occurred!"
+end

@@ -1,0 +1,44 @@
+$font-text: 'Lato', serif !important;
+$font-size: 48px;
+
+html {
+  font-family: $font-text;
+  font-size: $font-size;
+}
+
+.row-break {
+  height: 10em;
+  width: 100%;
+}
+
+.pre-footer {
+  height: 32em;
+  background: lighten(#bd5800, 40%);
+}
+
+.brand-bg {
+  background: #00bcd4
+}
+
+.tri{
+   background: #292929;
+}
+
+
+nav a:hover{
+  color: #429687;
+}
+
+.footer {
+  height: 15em;
+  padding-top: 1em;
+  background: #000
+}
+
+.form-container {
+  margin: 3em;
+}
+
+ul {
+  display: inline;
+}

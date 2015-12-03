@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151203142635) do
+ActiveRecord::Schema.define(version: 20151203154006) do
 
   create_table "links", force: :cascade do |t|
     t.string   "full_url"
@@ -27,12 +27,14 @@ ActiveRecord::Schema.define(version: 20151203142635) do
   add_index "links", ["user_id"], name: "index_links_on_user_id"
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",            null: false
+    t.string   "email",                                                                                         null: false
     t.string   "crypted_password"
     t.string   "salt"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "link_count",       default: 0
+    t.string   "api_key",          default: "QKK8l5u74DYX4BL2Z1fUdf1UmdKsfDQYtbYn5T1vv9e3suaSy1dJsp0wZ2JlWaOr"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
