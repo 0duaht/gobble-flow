@@ -11,6 +11,7 @@ gem "jquery-turbolinks"
 gem "jbuilder", "~> 2.0"
 gem "sorcery"
 gem "validates_email_format_of"
+gem "valid_url"
 gem "materialize-sass"
 gem "sdoc", "~> 0.4.0", group: :doc
 gem "codeclimate-test-reporter", group: :test, require: nil
@@ -20,6 +21,7 @@ group :development, :test do
   gem 'byebug'
   gem 'sqlite3'
   gem "rspec-rails"
+  gem "database_cleaner"
 end
 
 group :development do

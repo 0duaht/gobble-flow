@@ -7,8 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<%= render 'header' %>
 <%= yield %>
-
+<% if flash[:success] %>
+	<%= javascript_tag do %>
+		Materialize.toast('<%= flash[:success] %>', 5000, 'white black-text rounded')
+	<% end %>
+<% end %>
+<% if flash[:error] %>
+<%= javascript_tag do %>
+	Materialize.toast('<%= flash[:error] %>', 5000, 'white red-text rounded')
+<% end %>
+<% end %>
+<%= render 'prefooter' %>
+<%= render 'footer' %>
 </body>
 </html>
