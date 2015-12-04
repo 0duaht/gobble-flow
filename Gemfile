@@ -24,6 +24,8 @@ group :development, :test do
   gem "database_cleaner"
   gem 'simplecov', require: false
   gem "codeclimate-test-reporter", require: nil
+  gem "capybara"
+  gem "selenium-webdriver"
 end
 
 group :development do
