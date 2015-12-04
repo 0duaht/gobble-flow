@@ -37,4 +37,14 @@ describe UsersController, type: :request do
       "Email invalid. Please use a different one"
     )
   end
+
+  it "signs up successfully when all details are correct" do
+    get "/signup"
+    post "/users", user: {
+      name: name, email: email, password: password
+    }
+    expect(flash[:success]).to eql(
+      "Welcome, #{name.capitalize}"
+    )
+  end
 end
