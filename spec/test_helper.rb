@@ -10,10 +10,13 @@ module Gobble
             "getstart/rgsindexhtml.html",
           ]
         end
-        let(:name) { "testmaster" }
-        let(:email) { "testmaster@test.com" }
-        let(:password) { "testmaster" }
+        let(:valid_name) { "testmaster" }
+        let(:valid_email) { "testmaster@test.com" }
+        let(:valid_password) { "testmaster" }
         let(:max) { 40 }
+        let(:invalid_email) { "www gmail com" }
+        let(:invalid_name) { "T" }
+        let(:invalid_password) { "take" }
 
         before(:all) do
           DatabaseCleaner.strategy = :truncation
@@ -21,7 +24,24 @@ module Gobble
 
         after(:all) do
           DatabaseCleaner.clean
+          Capybara.reset_sessions!
+          Capybara.use_default_driver
         end
+      end
+
+      def signup_helper
+        fill_in "Name", with: valid_name
+        fill_in "Email", with: valid_email
+        fill_in "Password", with: valid_password
+
+        click_button "Register"
+      end
+
+      def login_helper
+        fill_in "Email", with: valid_email
+        fill_in "Password", with: valid_password
+
+        click_button "Log In"
       end
     end
   end
