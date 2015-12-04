@@ -19,3 +19,6 @@
 /.rspec
 /coverage
 /rubo.html
+/codeclimate-config.patch
+/coffeelint.json
+/.eslintrc

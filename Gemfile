@@ -14,14 +14,16 @@ gem "validates_email_format_of"
 gem "valid_url"
 gem "materialize-sass"
 gem "sdoc", "~> 0.4.0", group: :doc
-gem "codeclimate-test-reporter", group: :test, require: nil
 gem "coveralls", require: false
+gem "draper"
 
 group :development, :test do
   gem 'byebug'
   gem 'sqlite3'
   gem "rspec-rails"
   gem "database_cleaner"
+  gem 'simplecov', require: false
+  gem "codeclimate-test-reporter", require: nil
 end
 
 group :development do
