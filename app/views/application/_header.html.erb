@@ -8,9 +8,7 @@
 		</a>
 		
 		<ul class="right hide-on-med-and-down">
-	      <% unless current_page?(signup_path) %>
-	      	<li><%= link_to 'Sign Up', signup_path %></li>
-	      <% end %>
+	      <%= (signup_link) %>
 		</ul>
 	</div>
 </nav>
