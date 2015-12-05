@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#new", as: :login
   delete "/logout", to: "sessions#destroy", as: :logout
   resources :links
+  get '/:short_url' => 'links#process_url'
+  get '*path' => redirect('/')
 end

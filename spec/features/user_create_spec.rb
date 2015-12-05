@@ -18,7 +18,7 @@ describe "Link-Creation for Logged-In Users" do
     it "shortens urls by logged-in users", js: true do
       visit login_path
       login_helper
-      fill_in "Full URL", with: urls[0]
+      fill_in "Full URL", with: urls[1]
       fill_in "Custom URL", with: vanity
       click_button "Gobble"
 
@@ -32,10 +32,23 @@ describe "Link-Creation for Logged-In Users" do
       )
     end
 
+    it "redirects properly", js: true do
+      visit "/#{vanity}"
+      expect(page).to have_content('Sample "Hello, World" Application')
+    end
+    
+    it "raises error when an uncreated path is visited", js: true do
+      visit "/#{vanity}ad"
+      expect(page).to have_css(
+        "#toast-container",
+        text: "Link not created yet"
+      )
+    end
+
     it "raises error when url has been chosen", js: true do
       visit login_path
       login_helper
-      fill_in "Full URL", with: urls[1]
+      fill_in "Full URL", with: urls[0]
       fill_in "Custom URL", with: vanity
       click_button "Gobble"
 
