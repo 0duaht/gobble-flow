@@ -10,6 +10,12 @@ describe "Link-Creation for Anonymous Users" do
       expect(page).to have_no_content("Custom URL")
       expect(page).to have_button("Gobble")
     end
+
+    it "displays sections for popular links" do
+      visit root_path
+
+      expect(page).to have_content("Popular Links")
+    end
   end
 
   context "when anonymous user tries to create a link" do

@@ -1,6 +1,11 @@
 class Link < ActiveRecord::Base
   belongs_to :user
 
+  scope :most_popular, lambda {
+    where(deleted: false).order("count desc").
+      limit(5).select("full_url", "short_url", "count")
+  }
+
   validates :full_url, url: true, presence: true
   before_create :gen_short_url, :check_protocol
 
