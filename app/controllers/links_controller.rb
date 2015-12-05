@@ -3,6 +3,8 @@ class LinksController < ApplicationController
   include ConstantsHelper
 
   def create
+    return unless short_url_unique?
+
     @link = Link.new(link_params)
 
     if @link.save
@@ -13,6 +15,28 @@ class LinksController < ApplicationController
   end
 
   private
+
+    def short_url_unique?
+      return if short_link_taken?
+      return if anon_passing_short_link?
+      true
+    end
+
+    def short_link_taken?
+      if current_user && Link.find_by(short_url: params[:link][:short_url])
+        flash[:error] = URL_TAKEN
+        redirect_back_or_to root_path
+        true
+      end
+    end
+
+    def anon_passing_short_link?
+      if !current_user && params[:link][:short_url]
+        flash[:error] = NO_PERMISSION
+        redirect_back_or_to root_path
+        true
+      end
+    end
 
     def url_save_success
       flash[:url] = link_url(@link)

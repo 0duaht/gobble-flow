@@ -31,5 +31,18 @@ describe "Link-Creation for Logged-In Users" do
         text: "/#{vanity}"
       )
     end
+
+    it "raises error when url has been chosen", js: true do
+      visit login_path
+      login_helper
+      fill_in "Full URL", with: urls[1]
+      fill_in "Custom URL", with: vanity
+      click_button "Gobble"
+
+      expect(page).to have_css(
+        "#toast-container",
+        text: "URL already taken"
+      )
+    end
   end
 end
