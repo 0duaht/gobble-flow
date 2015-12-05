@@ -15,6 +15,12 @@ class LinksController < ApplicationController
     end
   end
 
+  def process_url
+    @link = Link.find_by(short_url: params[:short_url])
+    return if no_link_yet?
+    action_for_link_url
+  end
+
   private
 
     def short_url_unique?
@@ -72,5 +78,38 @@ class LinksController < ApplicationController
     def url_save_failure
       flash[:error] = ENTRY_INVALID
       redirect_back_or_to root_path
+    end
+
+    def no_link_yet?
+      unless @link
+        flash[:error] = LINK_NOT_CREATED
+        redirect_to root_path
+        true
+      end
+    end
+
+    def action_for_link_url
+      return if link_deleted?
+      return if link_not_active?
+
+      @link.count += 1
+      @link.save
+      redirect_to @link.full_url
+    end
+
+    def link_deleted?
+      if @link.deleted
+        flash[:error] = LINK_DELETED
+        redirect_to root_path
+        true
+      end
+    end
+
+    def link_not_active?
+      unless @link.active
+        flash[:error] = LINK_DISABLED
+        redirect_to root_path
+        true
+      end
     end
 end
