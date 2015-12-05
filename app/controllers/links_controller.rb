@@ -4,6 +4,7 @@ class LinksController < ApplicationController
 
   def create
     return unless short_url_unique?
+    return if reserved_word?
 
     @link = Link.new(link_params)
 
@@ -36,6 +37,19 @@ class LinksController < ApplicationController
         redirect_back_or_to root_path
         true
       end
+    end
+
+    def reserved_word?
+      reserved_words = %w(
+        login logout home signup
+        api edit links users
+      )
+      value_present = reserved_words.include?(params[:link][:short_url])
+      return unless value_present
+
+      flash[:error] = PATH_RESERVED
+      redirect_back_or_to root_path
+      true
     end
 
     def url_save_success
