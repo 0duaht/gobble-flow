@@ -1,0 +1,18 @@
+<div class="container center">
+	<%= form_for (@link) do |f| %>
+	<div class="row">
+		<div class="col l3">&nbsp;</div>
+		<div class="col l6">
+			<%= f.label :full_url, "Full URL" %>
+			<%= f.text_field :full_url, class: 'white-text center', required: true %>
+		</div>
+		<div class="col l3">&nbsp;</div>
+	</div>
+	
+	<%= short_url_entry(f) %>
+	
+	<div class="row">
+		<%= f.submit "Gobble ", 
+		class: "btn waves-effect waves-light btn-medium brand-bg white-text regular-text" %>
+	</div>
+<% end %>

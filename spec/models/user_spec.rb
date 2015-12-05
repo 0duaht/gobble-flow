@@ -6,7 +6,7 @@ end
 
 describe User, type: :model do
   include_context "shared stuff"
-  
+
   let(:name) { "Tobi" }
   let(:email) { "oduaht@gmail.com" }
   let(:password) { "andela" }

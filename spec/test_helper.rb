@@ -17,6 +17,9 @@ module Gobble
         let(:invalid_email) { "www gmail com" }
         let(:invalid_name) { "T" }
         let(:invalid_password) { "take" }
+        let(:invalid_url) { "test url" }
+        let(:reserved_word) { "logout" }
+        let(:vanity) { "testpage1" }
 
         before(:all) do
           DatabaseCleaner.strategy = :truncation

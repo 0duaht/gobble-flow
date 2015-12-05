@@ -1,5 +1,7 @@
 $font-text: 'Lato', serif !important;
 $font-size: 48px;
+$shorten-background: #292929;
+$chicken-image: "http://imageshack.com/a/img911/7117/rcaAoT.jpg";
 
 html {
   font-family: $font-text;
@@ -9,6 +11,33 @@ html {
 .row-break {
   height: 10em;
   width: 100%;
+}
+
+.shorten-body{
+  height: 30em;
+  width: 100%;
+  background: $shorten-background;
+  background-size: cover;
+  background-image: url($chicken-image);
+}
+
+.url-box {
+  background-color: black;
+  font-size: 1.2em;
+  padding-top: 0.3em;
+  width: 85%;
+  margin: auto;
+  border-radius: 3%;
+}
+
+.shorten-pad {
+  padding-top: 6em;
+}
+
+.container-large {
+  padding-left: 3.5em;
+  width: 90%;
+  margin: auto;
 }
 
 .pre-footer {
@@ -21,9 +50,12 @@ html {
 }
 
 .tri{
-   background: #292929;
+   background: $shorten-background;
 }
 
+.middle{
+  background: white;
+}
 
 nav a:hover{
   color: #429687;
@@ -35,10 +67,18 @@ nav a:hover{
   background: #000
 }
 
+.before-middle {
+  height: 7em;
+}
+
 .form-container {
   margin: 3em;
 }
 
 ul {
   display: inline;
+}
+
+.pad-right{
+  padding-right: 2em;
 }

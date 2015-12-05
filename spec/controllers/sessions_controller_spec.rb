@@ -1,9 +1,5 @@
 require "rails_helper"
 
-RSpec.configure do |c|
-  c.include Gobble::Shortener::Test
-end
-
 describe SessionsController, type: :request do
   include_context "shared stuff"
 
