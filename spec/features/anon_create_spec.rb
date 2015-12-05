@@ -13,8 +13,12 @@ describe "Link-Creation for Anonymous Users" do
 
     it "displays sections for popular links" do
       visit root_path
-
       expect(page).to have_content("Popular Links")
+    end
+
+    it "displays sections for recent links" do
+      visit root_path
+      expect(page).to have_content("Recent Links")
     end
   end
 
