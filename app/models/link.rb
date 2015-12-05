@@ -6,6 +6,11 @@ class Link < ActiveRecord::Base
       limit(5).select("full_url", "short_url", "count")
   }
 
+  scope :most_recent, lambda {
+    where(deleted: false).order("created_at desc").
+      limit(5).select("full_url", "short_url", "created_at")
+  }
+
   validates :full_url, url: true, presence: true
   before_create :gen_short_url, :check_protocol
 
