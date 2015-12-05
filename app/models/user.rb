@@ -4,6 +4,10 @@ class User < ActiveRecord::Base
   has_many :links
   authenticates_with_sorcery!
 
+  scope :top, lambda {
+    order("link_count desc").limit(5).select("name", "link_count")
+  }
+
   validates :name, length: {
     minimum: 2,
     message: "too short. Minimum length is two characters"

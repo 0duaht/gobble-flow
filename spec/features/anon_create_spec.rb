@@ -20,6 +20,11 @@ describe "Link-Creation for Anonymous Users" do
       visit root_path
       expect(page).to have_content("Recent Links")
     end
+
+    it "displays sections for influential users" do
+      visit root_path
+      expect(page).to have_content("Top Gobblers")
+    end
   end
 
   context "when anonymous user tries to create a link" do
