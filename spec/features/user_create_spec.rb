@@ -36,7 +36,7 @@ describe "Link-Creation for Logged-In Users" do
       visit "/#{vanity}"
       expect(page).to have_content('Sample "Hello, World" Application')
     end
-    
+
     it "raises error when an uncreated path is visited", js: true do
       visit "/#{vanity}ad"
       expect(page).to have_css(

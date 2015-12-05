@@ -91,7 +91,7 @@ class LinksController < ApplicationController
     def action_for_link_url
       return if link_deleted?
       return if link_not_active?
-  
+
       @link.count += 1
       @link.save
       redirect_to @link.full_url
