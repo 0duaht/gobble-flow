@@ -1,5 +1,4 @@
 module UsersHelper
-
   private
 
   def user_params

@@ -1,10 +1,6 @@
 require "rails_helper"
 
-RSpec.configure do |c|
-  c.include Gobble::Shortener::Test
-end
-
-describe "User Registration" do
+describe "User Management" do
   include_context "shared stuff"
 
   context "when user visits the registration page" do
