@@ -15,4 +15,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require materialize
+//= require zeroclipboard
 //= require_tree .

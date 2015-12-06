@@ -13,6 +13,7 @@ gem "sorcery"
 gem "validates_email_format_of"
 gem "valid_url"
 gem "materialize-sass"
+gem 'zeroclipboard-rails'
 gem "sdoc", "~> 0.4.0", group: :doc
 gem "coveralls", require: false
 gem "draper"
