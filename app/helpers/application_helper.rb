@@ -19,11 +19,6 @@ module ApplicationHelper
     render partial: "custom_url", object: form_obj, as: "f"
   end
 
-  def show_link_box
-    return unless flash[:url]
-    render partial: "link_box"
-  end
-
   def show_toast_message
     if flash[:success] && !flash[:url]
       render partial: "toast_message", object: flash[:success], as: "message"
