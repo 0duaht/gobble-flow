@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    redirect_to root_path && return if current_user
+    redirect_to home_path && return if current_user
     @user = User.new
   end
 
@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
     def login_success
       @user = current_user
       flash[:success] = "Welcome back, #{@user.name.capitalize}"
-      redirect_to root_path
+      redirect_to home_path
     end
 
     def login_failure

@@ -28,10 +28,6 @@ class User < ActiveRecord::Base
     self.api_key = SecureRandom.urlsafe_base64(48)
   end
 
-  def get_links
-    links.where(deleted: false).order("created_at desc")
-  end
-
   def get_error
     return_error = ERROR
     err_messages = errors.messages
@@ -41,5 +37,9 @@ class User < ActiveRecord::Base
       return_error = "#{error_column} #{error_cause}"
     end
     return_error
+  end
+
+  def get_links
+    self.links.where(deleted: false).order("created_at desc")
   end
 end

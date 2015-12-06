@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   include UsersHelper
 
+  before_action :require_login, only: [:home]
+  before_action :new_link, only: [:home]
+  before_action :get_current_user, only: [:home]
+
   def new
     @user = User.new
   end
@@ -15,16 +19,28 @@ class UsersController < ApplicationController
     end
   end
 
+  def home
+    @links = @user.get_links.decorate
+  end
+
   private
 
     def user_save_success
       login params[:user][:email], params[:user][:password]
       flash[:success] = "Welcome, #{@user.name.capitalize}"
-      redirect_to root_path
+      redirect_to home_path
     end
 
     def user_save_failure
       flash[:error] = @user.get_error
       redirect_to signup_path
+    end
+
+    def new_link
+      @link = Link.new
+    end
+
+    def get_current_user
+      @user = current_user
     end
 end
