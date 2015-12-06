@@ -1,0 +1,9 @@
+<%= render 'shorten' %>
+<div class="section center home">
+	<div class="row container">
+		<%= render "no_links" if @links.empty? %>
+		<ul>
+			<%= render partial: "home_link_card", collection: @links, as: :link %>
+		</ul>
+	</div>
+</div>

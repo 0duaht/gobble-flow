@@ -47,15 +47,6 @@ describe "User Management" do
       )
       expect(page).to have_link("Log Out")
     end
-
-    it "when user retries logging in while logged in,"\
-      " it redirects to root page" do
-      visit login_path
-      login_helper
-
-      visit login_path
-      expect(page).to have_current_path(login_path)
-    end
   end
 
   context "when user visits logout path" do

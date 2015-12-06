@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   get "/signup", to: "users#new", as: :signup
   get "/login", to: "sessions#new", as: :login
+  get "/home", to: "users#home", as: :home
   delete "/logout", to: "sessions#destroy", as: :logout
   resources :links
   get "/:short_url" => "links#process_url"

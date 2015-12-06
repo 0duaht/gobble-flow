@@ -14,6 +14,11 @@ module ApplicationHelper
     content_tag(:li, (link_to "Log Out", logout_path, method: "delete"))
   end
 
+  def home_link
+    return unless current_user && !current_page?(home_path)
+    content_tag(:li, (link_to "Dashboard", home_path))
+  end
+
   def short_url_entry(form_obj)
     return unless current_user
     render partial: "custom_url", object: form_obj, as: "f"
