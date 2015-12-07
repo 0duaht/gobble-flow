@@ -1,6 +1,6 @@
 require "codeclimate-test-reporter"
 require "coveralls"
-# require 'simplecov'
+# require "simplecov"
 Coveralls.wear!
 # SimpleCov.start
 CodeClimate::TestReporter.start

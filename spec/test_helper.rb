@@ -20,6 +20,11 @@ module Gobble
         let(:invalid_url) { "test url" }
         let(:reserved_word) { "logout" }
         let(:vanity) { "testpage1" }
+        let(:hacker_email) { "jane@try.com" }
+        let(:hacker_pass) { "janehack" }
+        let(:no_permission) { "Permission not granted." }
+        let(:no_delete_permission) { "You're not permitted to delete link!" }
+        let(:no_edit_permission) { "You're not permitted to edit link." }
 
         before(:all) do
           DatabaseCleaner.strategy = :truncation

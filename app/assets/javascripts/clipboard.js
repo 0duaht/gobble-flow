@@ -1,6 +1,7 @@
 $(document).ready(function(){
-	new ZeroClipboard($(".clip_button"));
+	var clip = new ZeroClipboard($(".clip_button"));
 	$(".clip_button").click(function() {
+		clip = new ZeroClipboard($(".clip_button"));
     	Materialize.toast(
 			"Link copied to Clipboard",
     		2000, "white black-text rounded"

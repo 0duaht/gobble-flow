@@ -3,10 +3,14 @@ module LinksHelper
     root_url + link.short_url
   end
 
-  private begin
+  private
+
     def link_params
       params.require(:link).
         permit(:full_url, :short_url, :active)
     end
-  end
+
+    def link_change_helper
+      @link = Link.find(params[:id])
+    end
 end
