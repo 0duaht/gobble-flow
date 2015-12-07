@@ -1,0 +1,25 @@
+<div class="row-break"></div>
+<div class="container">
+<h3 class="center">The Gobble API</h3>
+<div class="row">
+	<div class="left">
+		<h5>About</h5>
+		<p>The Gobble API allows you generate links without needing to visit our webpage. To do this, you need to interface through the Gobble gem.
+			With the Gobble gem, you can generate links by passing in required parameters.</p><br /> 
+			
+		<h5>Requirements</h5>
+		<p>To use the Gobble API, you need a user account. Register one <%= link_to "here", signup_url %></p>
+		<p>Once registered, copy your API key which is accessible from your profile page <%= link_to "here", home_url %></p>
+		<p>Once you've gotten your API key, you can then use with the Gobble gem on your PC.</p>
+		<p>See <%= link_to "Gobble-Gem on Github", "https://github.com/andela-toduah/gobble-gem" %>  for instructions.</p><br />
+		
+		<h5>Usage</h5>
+		<p>Direct all requests to <%= link_to api_url, api_url %></p>
+		<p>The API takes in two necessary parameters and one optional parameter.</p>
+		<p>Two necessary parameters are <span class="bold">full_url</span> and <span class="bold">key</span></p>
+		<p><span class="bold">full_url</span> represents the url to be shortened, while <span class="bold">key</span> represents a valid API key</p>
+		<p>The optional parameter is the <span class="bold">short_url</span> which represents a custom url option to be used if available</p><br />
+		<p>In light of these, a valid query would be: <br /><%= api_create_url + "?" + "key=" + "pSUx60qTbWXpCzKCAIEg29hrr5dlrYFS-PYiaQZ7383QGNsZPxvYppQMaZLrpvwK" + "&full_url=" + "http://classmaster.org" + "&short_url=" + "classes" %></p>	
+	</div>
+</div>
+</div>
