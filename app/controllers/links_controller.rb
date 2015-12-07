@@ -2,6 +2,9 @@ class LinksController < ApplicationController
   include LinksHelper
   include ConstantsHelper
 
+  before_action :require_login, only: [:edit, :update, :destroy]
+  before_action :link_change_helper, only: [:edit, :update, :destroy]
+
   def create
     return unless short_url_unique?
     return if reserved_word?
@@ -19,6 +22,26 @@ class LinksController < ApplicationController
     @link = Link.find_by(short_url: params[:short_url])
     return if no_link_yet?
     action_for_link_url
+  end
+
+  def edit
+    return if @link.user_id == current_user.id
+
+    flash[:error] = NO_EDIT_PERMISSION
+    redirect_to root_path
+  end
+
+  def update
+    if @link.user_id == current_user.id
+      update_link
+    else
+      no_update_permission
+    end
+  end
+
+  def destroy
+    return if no_delete_permission?
+    delete_link_action
   end
 
   private
@@ -81,11 +104,11 @@ class LinksController < ApplicationController
     end
 
     def no_link_yet?
-      unless @link
-        flash[:error] = LINK_NOT_CREATED
-        redirect_to root_path
-        true
-      end
+      return if @link
+
+      flash[:error] = LINK_NOT_CREATED
+      redirect_to root_path
+      true
     end
 
     def action_for_link_url
@@ -98,18 +121,56 @@ class LinksController < ApplicationController
     end
 
     def link_deleted?
-      if @link.deleted
-        flash[:error] = LINK_DELETED
-        redirect_to root_path
-        true
-      end
+      return unless @link.deleted
+
+      flash[:error] = LINK_DELETED
+      redirect_to root_path
+      true
     end
 
     def link_not_active?
-      unless @link.active
-        flash[:error] = LINK_DISABLED
-        redirect_to root_path
-        true
+      return if @link.active
+
+      flash[:error] = LINK_DISABLED
+      redirect_to root_path
+      true
+    end
+
+    def update_link
+      if @link.update(link_params)
+        update_success
+      else
+        update_failure
       end
+    end
+
+    def update_success
+      flash[:success] = DATA_UPDATED
+      redirect_to home_path
+    end
+
+    def update_failure
+      flash[:error] = @link.get_error
+      redirect_to home_path
+    end
+
+    def no_update_permission
+      flash[:error] = NO_EDIT_PERMISSION
+      redirect_to root_path
+    end
+
+    def no_delete_permission?
+      return if @link.user_id == current_user.id
+
+      flash[:error] = NO_DELETE_PERMISSION
+      redirect_to root_path
+      true
+    end
+
+    def delete_link_action
+      @link.update deleted: true
+      current_user.update link_count: (current_user.link_count - 1)
+      flash[:success] = DELETE_SUCCESS
+      redirect_to home_path
     end
 end

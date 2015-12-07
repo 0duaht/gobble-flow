@@ -1,4 +1,6 @@
 class Link < ActiveRecord::Base
+  include ConstantsHelper
+
   belongs_to :user
 
   scope :most_popular, lambda {
@@ -24,5 +26,16 @@ class Link < ActiveRecord::Base
     unless self.full_url.start_with?("http")
       self.full_url = "http://" + self.full_url
     end
+  end
+
+  def get_error
+    return_error = ERROR
+    err_messages = errors.messages
+    if err_messages
+      error_column = err_messages.first[0].to_s.split("_").join(" ").capitalize
+      error_cause = err_messages.first[1][0].to_s
+      return_error = "#{error_column} #{error_cause}"
+    end
+    return_error
   end
 end

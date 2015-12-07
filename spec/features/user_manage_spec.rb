@@ -20,8 +20,10 @@ describe "User Management" do
       visit signup_path
       signup_helper
 
-      expect(page).to have_css("#toast-container",
-        text: "Welcome, #{valid_name.capitalize}")
+      expect(page).to have_css(
+        "#toast-container",
+        text: "Welcome, #{valid_name.capitalize}"
+      )
       expect(page).to have_link("Log Out")
     end
   end

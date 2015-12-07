@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
 
 gem "rails", "4.2.4"
@@ -19,22 +19,22 @@ gem "coveralls", require: false
 gem "draper"
 
 group :development, :test do
-  gem 'byebug'
-  gem 'sqlite3'
+  gem "byebug"
+  gem "sqlite3"
   gem "rspec-rails"
   gem "database_cleaner"
-  gem 'simplecov', require: false
+  gem "simplecov", require: false
   gem "codeclimate-test-reporter", require: nil
   gem "capybara"
   gem "selenium-webdriver"
 end
 
 group :development do
-  gem 'web-console', '~> 2.0'
-  gem 'spring'
+  gem "web-console", "~> 2.0"
+  gem "spring"
 end
 
 group :production do
-  gem 'pg'
+  gem "pg"
   gem "puma"
 end

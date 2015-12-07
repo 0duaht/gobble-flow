@@ -1,0 +1,19 @@
+<div class="row-break"></div>
+<div class="container center">
+	<div class="form-container">
+		<h1>Edit Link</h1>
+		<%= form_for (@link) do |f| %>
+		<%= f.label :full_url, "Full URL" %>
+		<%= f.text_field :full_url, class: 'center' %>
+        <%= f.radio_button :active, true, id: "true" %>
+        <%= f.label :active, "Active", for: "true", class: 'active-text' %>
+        <%= f.radio_button :active,  false, id: "false" %>
+        <%= f.label :active, "Inactive", for: "false", class: 'inactive-text' %><br /><br />
+        <div class="row center">
+        	<%= f.submit "Update", class: "btn waves-effect waves-light btn-medium brand-bg white-text regular-text" %>
+			<%= link_to "Delete", link_path(@link),
+			 class: "btn waves-effect waves-light red btn-medium brand-bg white-text regular-text", method: "delete" %>
+        </div>
+		<% end %>
+	</div>
+</div>
