@@ -19,6 +19,11 @@ module ApplicationHelper
     content_tag(:li, (link_to "Dashboard", home_path))
   end
 
+  def security_link
+    return unless current_user && !current_page?(security_path)
+    content_tag(:li, (link_to "Security", security_path))
+  end
+
   def short_url_entry(form_obj)
     return unless current_user
     render partial: "custom_url", object: form_obj, as: "f"

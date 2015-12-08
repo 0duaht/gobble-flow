@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   include UsersHelper
 
-  before_action :require_login, only: [:home]
-  before_action :new_link, only: [:home]
-  before_action :get_current_user, only: [:home]
+  before_action :require_login, only: [:home, :security]
+  before_action :new_link, only: [:home, :security]
+  before_action :get_current_user, only: [:home, :security]
 
   def new
     @user = User.new
@@ -21,6 +21,10 @@ class UsersController < ApplicationController
 
   def home
     @links = @user.get_links.decorate
+  end
+
+  def security
+    @api_key = @user.api_key
   end
 
   private
