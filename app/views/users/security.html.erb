@@ -1,0 +1,10 @@
+<%= render 'shorten' %>
+<div class="section center home">
+	<% key = @user.api_key %>
+	<div class="row container">
+		<h6 class="api-box">Your personal public API Key is <%= key %></h6>
+	</div><br />
+	<button class='btn waves-effect waves-light clip_button btn-medium brand-bg white-text regular-text' data-clipboard-text= <%= key %>>
+	Copy Key to Clipboard
+	</button>
+</div>
