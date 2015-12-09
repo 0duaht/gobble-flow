@@ -11,6 +11,11 @@ module LinksHelper
     end
 
     def link_change_helper
-      @link = Link.find(params[:id])
+      @link = Link.find(params[:id]).decorate
+    end
+
+    def not_authenticated
+      flash[:success] = "Please login first"
+      redirect_to login_path
     end
 end

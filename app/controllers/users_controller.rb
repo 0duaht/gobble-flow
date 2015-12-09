@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   include UsersHelper
+  include LinksHelper
+  include ConstantsHelper
 
   before_action :require_login, only: [:home, :security]
   before_action :new_link, only: [:home, :security]

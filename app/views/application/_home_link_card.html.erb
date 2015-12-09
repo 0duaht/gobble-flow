@@ -2,6 +2,7 @@
 	<span class="badge white-text"><%= link.clicks_badge %></span><br/>
 	<span title= <%= link.full_url %> class="card-content"><%= link.compact_full_url %></span><br/><br />
 	<%= link.link_to_url %></br/><br />
-	<%= link_to "Edit Goblet", edit_link_url(link), class: 'card-action left' %>
-	<%= link_to "Copy Link", "#", class: 'clip_button card-action right', data: {"clipboard-text": link_url(link) } %>
+	<%= link_to "Statistics", link.stats_link_url, class: 'card-action left' %>
+	<%= link_to "Copy Link", "#", class: 'clip_button card-action right', data: {"clipboard-text": link_url(link) } %><br/><br />
+	<%= link_to "Manage", edit_link_url(link), class: 'btn waves-effect waves-light btn-medium brand-bg white-text regular-text center' %><br /><br >
 </li>

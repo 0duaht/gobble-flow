@@ -2,8 +2,8 @@ class LinksController < ApplicationController
   include LinksHelper
   include ConstantsHelper
 
-  before_action :require_login, only: [:edit, :update, :destroy]
-  before_action :link_change_helper, only: [:edit, :update, :destroy]
+  before_action :require_login, only: [:edit, :update, :destroy, :show]
+  before_action :link_change_helper, only: [:edit, :update, :destroy, :show]
 
   def create
     return unless short_url_unique?
@@ -18,6 +18,10 @@ class LinksController < ApplicationController
     end
   end
 
+  def show
+    return if user_not_allowed_to_view_link?
+  end
+
   def process_url
     @link = Link.find_by(short_url: params[:short_url])
     return if no_link_yet?
@@ -25,7 +29,7 @@ class LinksController < ApplicationController
   end
 
   def edit
-    return if @link.user_id == current_user.id
+    return if user_authorized_to_perform?
 
     flash[:error] = NO_EDIT_PERMISSION
     redirect_to root_path
@@ -96,6 +100,18 @@ class LinksController < ApplicationController
       current_user.update link_count: link_count
       redirect_back_or_to root_path
       true
+    end
+
+    def user_not_allowed_to_view_link?
+      return if user_authorized_to_perform?
+
+      flash[:error] = NO_VIEW_PERMISSION
+      redirect_to root_path
+      true
+    end
+
+    def user_authorized_to_perform?
+      @link.user_id == current_user.id
     end
 
     def url_save_failure
