@@ -8,6 +8,7 @@ module ConstantsHelper
   PATH_RESERVED = "Path reserved. Please choose a different custom URL"
   NO_PERMISSION = "Permission not granted."
   NO_EDIT_PERMISSION = "You're not permitted to edit link."
+  NO_VIEW_PERMISSION = "You're not permitted to view link."
   LINK_DELETED = "Link deleted by Creator"
   LINK_DISABLED = "Link disabled by Creator"
   LINK_NOT_CREATED = "Link not created yet"

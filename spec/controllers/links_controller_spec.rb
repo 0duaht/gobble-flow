@@ -79,6 +79,16 @@ describe LinksController, type: :request do
     expect(flash[:error]).to eql(no_edit_permission)
   end
 
+  it "detects when a link statistic page is about to be viewed "\
+  "by a user who's not the creator" do
+    create_user_and_login
+    create_link_and_logout
+
+    create_hacker_and_login
+    get "/links/1"
+    expect(flash[:error]).to eql(no_view_permission)
+  end
+
   it "detects when a link-update action is initiated "\
   "by a user who's not the creator" do
     create_user_and_login
