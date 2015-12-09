@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
-  private begin
+  private
 
     def login_success
       @user = current_user
@@ -30,6 +30,4 @@ class SessionsController < ApplicationController
       flash[:error] = LOGIN_FAILED
       redirect_to login_path
     end
-
-  end
 end
