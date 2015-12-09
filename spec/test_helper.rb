@@ -13,7 +13,7 @@ module Gobble
         let(:valid_name) { "testmaster" }
         let(:valid_email) { "testmaster@test.com" }
         let(:valid_password) { "testmaster" }
-        let(:max) { 40 }
+        let(:max) { 35 }
         let(:invalid_email) { "www gmail com" }
         let(:invalid_name) { "T" }
         let(:invalid_password) { "take" }
@@ -25,6 +25,7 @@ module Gobble
         let(:no_permission) { "Permission not granted." }
         let(:no_delete_permission) { "You're not permitted to delete link!" }
         let(:no_edit_permission) { "You're not permitted to edit link." }
+        let(:no_view_permission) { "You're not permitted to view link." }
 
         before(:all) do
           DatabaseCleaner.strategy = :truncation

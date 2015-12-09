@@ -28,11 +28,19 @@ describe "User's Dashboard" do
       expect(page).to have_content("/#{vanity}")
     end
 
+    it "allows user view link statistics", js: true do
+      visit login_path
+      login_helper
+
+      click_link "Statistics"
+      expect(page).to have_content(urls[1])
+    end
+
     it "allows user edit link", js: true do
       visit login_path
       login_helper
 
-      click_link "Edit Goblet"
+      click_link "Manage"
 
       fill_in "Full URL", with: urls[0]
       click_button "Update"
@@ -46,7 +54,7 @@ describe "User's Dashboard" do
       visit login_path
       login_helper
 
-      click_link "Edit Goblet"
+      click_link "Manage"
 
       fill_in "Full URL", with: "invalid test"
       click_button "Update"
@@ -63,7 +71,7 @@ describe "User's Dashboard" do
       visit login_path
       login_helper
 
-      click_link "Edit Goblet"
+      click_link "Manage"
 
       find(".inactive-text", text: "Inactive").click
       click_button "Update"
@@ -79,7 +87,7 @@ describe "User's Dashboard" do
       visit login_path
       login_helper
 
-      click_link "Edit Goblet"
+      click_link "Manage"
 
       click_link "Delete"
 
