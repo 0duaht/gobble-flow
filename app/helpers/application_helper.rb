@@ -33,7 +33,7 @@ module ApplicationHelper
     if flash[:success] && !flash[:url]
       render partial: "toast_message", object: flash[:success], as: "message"
     elsif flash[:error]
-      render partial: "toast_message", object: flash[:error], as: "message"
+      render partial: "toast_error", object: flash[:error], as: "message"
     end
   end
 end

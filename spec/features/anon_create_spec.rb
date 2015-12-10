@@ -50,4 +50,15 @@ describe "Link-Creation for Anonymous Users" do
       )
     end
   end
+
+  context "when anonymous users try to visit links that need authentication" do
+    it "raises error when dashboard path is visited", js: true do
+      visit home_path
+
+      expect(page).to have_css(
+        "#toast-container",
+        text: "Please login first"
+      )
+    end
+  end
 end
