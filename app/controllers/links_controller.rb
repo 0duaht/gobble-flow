@@ -20,6 +20,7 @@ class LinksController < ApplicationController
 
   def show
     return if user_not_allowed_to_view_link?
+    @visit_details = @link.visit_details.decorate
   end
 
   def process_url
@@ -133,7 +134,21 @@ class LinksController < ApplicationController
 
       @link.count += 1
       @link.save
+      VisitDetail.new(get_visit_details).save
       redirect_to @link.full_url
+    end
+
+    def get_visit_details
+      ip_address = request.remote_ip
+      referer = request.referer
+      user_agent = UserAgent.parse(request.env["HTTP_USER_AGENT"])
+      browser_details = "#{user_agent.browser} #{user_agent.version}"
+      {
+        ip_address: ip_address,
+        referer: referer,
+        browser_details: browser_details,
+        link_id: @link.id
+      }
     end
 
     def link_deleted?

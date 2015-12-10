@@ -9,7 +9,11 @@
 			<tr><td>Date Created: </td><td>&nbsp;</td><td><%= @link.created_at.strftime('%B %e at %l:%M %p') %></td></tr>
 			<tr><td>Visits: </td><td>&nbsp;</td><td><%= @link.clicks_badge %></td></tr>
 			<tr><td>Compression Rate: </td><td>&nbsp;</td><td><%= @link.compression_text %></td></tr>
-		</table>	
+		</table>
+		<div class="details-section">
+			<%= render "visits_section" unless @visit_details.empty? %>
+			<%= render "visit_detail_teaser" %>
+		</div>
 	</div>
 </div>
 </div>

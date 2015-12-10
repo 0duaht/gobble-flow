@@ -1,0 +1,9 @@
+<p>Details about individual visits:</p>
+<table class="details-table">
+	<tr>
+		<th>IP Address</th>
+	 	<th>Referer</th>
+		<th>Browser Information</th>
+	</tr>
+	<%= render partial: "visit_detail_row", collection: @visit_details, as: :visit_detail %>
+</table>
