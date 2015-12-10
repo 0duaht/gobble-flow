@@ -11,8 +11,8 @@
 			<tr><td>Compression Rate: </td><td>&nbsp;</td><td><%= @link.compression_text %></td></tr>
 		</table>
 		<div class="details-section">
-			<%= render "visits_section" unless @visit_details.empty? %>
-			<%= render "visit_detail_teaser" %>
+			<%= render "links/partials/visits_section" unless @visit_details.empty? %>
+			<%= render "links/partials/visit_detail_teaser" %>
 		</div>
 	</div>
 </div>

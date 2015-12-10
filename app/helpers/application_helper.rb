@@ -26,14 +26,18 @@ module ApplicationHelper
 
   def short_url_entry(form_obj)
     return unless current_user
-    render partial: "custom_url", object: form_obj, as: "f"
+    render partial: "application/shorten/custom_url", object: form_obj, as: "f"
   end
 
   def show_toast_message
     if flash[:success] && !flash[:url]
-      render partial: "toast_message", object: flash[:success], as: "message"
+      render partial: "application/toast/toast_message",
+             object: flash[:success],
+             as: "message"
     elsif flash[:error]
-      render partial: "toast_error", object: flash[:error], as: "message"
+      render partial: "application/toast/toast_error",
+             object: flash[:error],
+             as: "message"
     end
   end
 end
