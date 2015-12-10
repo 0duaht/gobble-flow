@@ -1,25 +1,25 @@
-<%= render 'shorten' %>
+<%= render partial: 'application/shorten/shorten' %>
 <div class = "middle">
 <div class = "container-large shorten-pad">
 	<div class="row">
 		<div class="card center teal lighten-2 col s12 m12 l4 popular">
 			<h5 class="card-content">Popular Links</h5>
 			<ul>
-				<%= render partial: "popular_link_card", collection: @popular, as: :link %>
+				<%= render partial: "root/partials/popular_link_card", collection: @popular, as: :link %>
 			</ul>
 		</div>
 		<div class="col l0.4">&nbsp;</div>
 		<div class="card center teal lighten-2 col s12 m12 l4 recent">
 			<h5 class="card-content">Recent Links</h5>
 			<ul>
-				<%= render partial: "recent_link_card", collection: @recent, as: :link %>
+				<%= render partial: "root/partials/recent_link_card", collection: @recent, as: :link %>
 			</ul>
 		</div>
 		<div class="col l0.4">&nbsp;</div>
 		<div class="card center teal lighten-2 col s12 m12 l3 top">
 			<h5 class="card-content">Top Gobblers</h5>
 			<ul>
-				<%= render partial: 'user_card', collection: @users, as: :user %>
+				<%= render partial: 'root/partials/user_card', collection: @users, as: :user %>
 			</ul>
 		</div>
 	</div>
