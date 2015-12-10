@@ -1,5 +1,5 @@
 # Gobble
-[![Build Status](https://semaphoreci.com/api/v1/projects/c981c3c2-6d95-4c2b-a4a9-7942b9c5a479/629366/badge.svg)](https://semaphoreci.com/tobi-oduah/gobble-flow) [![Code Climate](https://codeclimate.com/github/andela-toduah/gobble-flow/badges/gpa.svg)](https://codeclimate.com/github/andela-toduah/gobble-flow) [![Test Coverage](https://codeclimate.com/github/andela-toduah/gobble-flow/badges/coverage.svg)](https://codeclimate.com/github/andela-toduah/gobble-flow/coverage)
+[![Build Status](https://semaphoreci.com/api/v1/projects/c981c3c2-6d95-4c2b-a4a9-7942b9c5a479/621849/badge.svg)](https://semaphoreci.com/tobi-oduah/gobble-flow) [![Code Climate](https://codeclimate.com/github/andela-toduah/gobble-flow/badges/gpa.svg)](https://codeclimate.com/github/andela-toduah/gobble-flow) [![Test Coverage](https://codeclimate.com/github/andela-toduah/gobble-flow/badges/coverage.svg)](https://codeclimate.com/github/andela-toduah/gobble-flow/coverage)
 
 ## Features
 Gobble is an easy-to-use URL shortener for generating shortened URLs from lengthy URLs passed in. It allows users pass in ugly, long URLs and generates short unique URLs that redirect to the original address.
