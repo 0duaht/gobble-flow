@@ -2,6 +2,7 @@ class Link < ActiveRecord::Base
   include ConstantsHelper
 
   belongs_to :user
+  has_many :visit_details
 
   scope :most_popular, lambda {
     where(deleted: false).order("count desc").

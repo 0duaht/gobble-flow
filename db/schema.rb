@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151203154006) do
+ActiveRecord::Schema.define(version: 20151210094855) do
 
   create_table "links", force: :cascade do |t|
     t.string   "full_url"
@@ -38,5 +38,16 @@ ActiveRecord::Schema.define(version: 20151203154006) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+
+  create_table "visit_details", force: :cascade do |t|
+    t.string   "ip_address"
+    t.string   "referer"
+    t.string   "browser_details"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "link_id"
+  end
+
+  add_index "visit_details", ["link_id"], name: "index_visit_details_on_link_id"
 
 end
