@@ -49,6 +49,14 @@ describe LinksController, type: :request do
     test_link.destroy
   end
 
+  it "displays error when compression rate is negative" do
+    test_link = Link.new(full_url: "http://t.com")
+    test_link.save
+    decorated_link = test_link.decorate
+    expect(decorated_link.compression_text).to eql("Link was not shortened. :(")
+    test_link.destroy
+  end
+
   it "raises an error when a deleted link is visited" do
     test_link = Link.new(full_url: urls[1], short_url: vanity, deleted: true)
     test_link.save

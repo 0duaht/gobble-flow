@@ -36,7 +36,7 @@ class LinkDecorator < Draper::Decorator
 
   def compression_text
     return get_text if full_url.length > full_short_url.length
-    "Link was not shortened.   :("
+    "Link was not shortened. :("
   end
 
   def get_text

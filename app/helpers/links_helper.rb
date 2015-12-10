@@ -15,7 +15,7 @@ module LinksHelper
     end
 
     def not_authenticated
-      flash[:success] = "Please login first"
+      flash[:error] = "Please login first"
       redirect_to login_path
     end
 end
