@@ -1,6 +1,5 @@
 class ApiController < ApplicationController
   include LinksHelper
-  include ConstantsHelper
 
   def index
   end
@@ -24,6 +23,7 @@ class ApiController < ApplicationController
     def short_url_unique?
       render plain: URL_TAKEN &&
         return if Link.find_by(short_url: params[:short_url])
+
       true
     end
 
@@ -44,6 +44,6 @@ class ApiController < ApplicationController
     end
 
     def api_params
-      params.permit(:full_url, :short_url)
+      params.permit :full_url, :short_url
     end
 end

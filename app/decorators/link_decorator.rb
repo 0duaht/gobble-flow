@@ -16,11 +16,11 @@ class LinkDecorator < Draper::Decorator
   end
 
   def compact_full_url
-    get_compact_form(full_url)
+    get_compact_form full_url
   end
 
   def full_short_url
-    h.link_url(link)
+    h.link_url link
   end
 
   def link_to_url
@@ -44,7 +44,7 @@ class LinkDecorator < Draper::Decorator
     short_length = full_short_url.length
     length_diff = full_length - short_length
     compress_rate = ((length_diff.to_f / full_length).round(2) * 100).to_i
-    compress_rate_text(compress_rate, length_diff)
+    compress_rate_text compress_rate, length_diff
   end
 
   def compress_rate_text(compress_rate, length_diff)

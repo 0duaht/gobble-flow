@@ -25,6 +25,5 @@ describe User, type: :model do
     expect(new_user).to respond_to(:api_key)
     expect(new_user).to respond_to(:link_count)
     expect(new_user.get_links.length).to eql(0)
-    expect(new_user).to be_a User
   end
 end

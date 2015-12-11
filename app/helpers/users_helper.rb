@@ -3,6 +3,6 @@ module UsersHelper
 
   def user_params
     params.require(:user).
-      permit(:email, :password, :name)
+      permit :email, :password, :name
   end
 end
