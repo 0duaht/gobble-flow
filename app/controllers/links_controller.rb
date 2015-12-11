@@ -1,6 +1,5 @@
 class LinksController < ApplicationController
   include LinksHelper
-  include ConstantsHelper
 
   before_action :require_login, only: [:edit, :update, :destroy, :show]
   before_action :link_change_helper, only: [:edit, :update, :destroy, :show]
@@ -54,6 +53,7 @@ class LinksController < ApplicationController
     def short_url_unique?
       return if short_link_taken?
       return if anon_passing_short_link?
+
       true
     end
 
@@ -61,6 +61,7 @@ class LinksController < ApplicationController
       if current_user && Link.find_by(short_url: params[:link][:short_url])
         flash[:error] = URL_TAKEN
         redirect_back_or_to root_path
+
         true
       end
     end
@@ -69,6 +70,7 @@ class LinksController < ApplicationController
       if !current_user && params[:link][:short_url]
         flash[:error] = NO_PERMISSION
         redirect_back_or_to root_path
+
         true
       end
     end
@@ -83,6 +85,7 @@ class LinksController < ApplicationController
 
       flash[:error] = PATH_RESERVED
       redirect_back_or_to root_path
+
       true
     end
 
@@ -100,6 +103,7 @@ class LinksController < ApplicationController
       link_count = current_user.link_count + 1
       current_user.update link_count: link_count
       redirect_back_or_to root_path
+
       true
     end
 
@@ -108,6 +112,7 @@ class LinksController < ApplicationController
 
       flash[:error] = NO_VIEW_PERMISSION
       redirect_to root_path
+
       true
     end
 
@@ -125,6 +130,7 @@ class LinksController < ApplicationController
 
       flash[:error] = LINK_NOT_CREATED
       redirect_to root_path
+
       true
     end
 
@@ -143,6 +149,7 @@ class LinksController < ApplicationController
       referer = request.referer
       user_agent = UserAgent.parse(request.env["HTTP_USER_AGENT"])
       browser_details = "#{user_agent.browser} #{user_agent.version}"
+
       {
         ip_address: ip_address,
         referer: referer,
@@ -156,6 +163,7 @@ class LinksController < ApplicationController
 
       flash[:error] = LINK_DELETED
       redirect_to root_path
+
       true
     end
 
@@ -164,6 +172,7 @@ class LinksController < ApplicationController
 
       flash[:error] = LINK_DISABLED
       redirect_to root_path
+
       true
     end
 
@@ -195,6 +204,7 @@ class LinksController < ApplicationController
 
       flash[:error] = NO_DELETE_PERMISSION
       redirect_to root_path
+
       true
     end
 
